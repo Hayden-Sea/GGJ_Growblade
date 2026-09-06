@@ -31,6 +31,9 @@ CODELY.md
 artifacts/
 screenshots/
 sword_showcase.gif
+.codex-finalizer/
+.codex-ppt-build/
+output/
 
 # OS metadata
 .DS_Store
