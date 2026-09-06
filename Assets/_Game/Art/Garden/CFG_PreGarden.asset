@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806ca51be249c5d4db68e43ace781368, type: 3}
+  m_Name: CFG_PreGarden
+  m_EditorClassIdentifier: 
+  tileSize: 1
+  playerRadius: 0.28
+  enemyRadius: 0.3
+  coreRadius: 0.4
+  bladeRadius: 0.1
+  bladeVisualWidth: 0.22
+  startTipHalfUnits: 3
+  maxTipHalfUnits: 8
+  growthHalfUnits: 1
+  growthCount: 5
+  playerHp: 4
+  enemyHp: 2
+  coreHp: 3
+  bladeDamage: 1
+  wallImpactDamage: 1
+  enemyDamage: 1
+  knockbackCells: 1
+  maxEnemiesPerRoom: 6
+  outerMotionStep: 0.1
+  contactTolerance: 0.002
+  numericalEpsilon: 0.00001
+  moveDuration: 0.18
+  rotateDuration: 0.2
+  wallPause: 0.05
+  returnScale: 0.6
+  knockbackDuration: 0.1
+  enemyMoveDuration: 0.14
+  growthDuration: 0.45
+  hitPausePerTarget: 0.035
+  hitPauseCap: 0.06
+  arrowFlashDuration: 0.1
+  playerSprite: {fileID: 21300000, guid: 9058a0f8177af5f4eb6bc5d682ae8e59, type: 3}
+  chargerSprite: {fileID: 21300000, guid: e52af747eae33f847810e6b08f396f6e, type: 3}
+  archerSprite: {fileID: 21300000, guid: 558dc026ad7eb3047abb6f53fb863a1a, type: 3}
+  coreSprite: {fileID: 21300000, guid: d4432b5880a5a944d8e5fe5472a7dea2, type: 3}
+  wallSprite: {fileID: 21300000, guid: 341206c846cd6cc439a88bcdbc7c2d26, type: 3}
+  floorSprite: {fileID: 21300000, guid: 18152ad12ee8d9d4da411ff23455fc87, type: 3}
+  backgroundColor: {r: 0.07, g: 0.06, b: 0.09, a: 1}
+  floorTint: {r: 0.75, g: 0.72, b: 0.7, a: 1}
+  wallTint: {r: 1, g: 1, b: 1, a: 1}
+  bladeColor: {r: 0.92, g: 0.95, b: 1, a: 1}
+  bladeFlashColor: {r: 1, g: 1, b: 1, a: 1}
+  trailOutColor: {r: 1, g: 1, b: 1, a: 0.35}
+  trailReturnColor: {r: 1, g: 1, b: 1, a: 0.18}
+  intentArrowColor: {r: 1, g: 0.42, b: 0.1, a: 1}
+  intentRayColor: {r: 1, g: 0.3, b: 0.1, a: 0.55}
+  exitLitColor: {r: 0.35, g: 1, b: 0.55, a: 1}
+  exitDimColor: {r: 0.3, g: 0.32, b: 0.35, a: 1}
+  hitSparkColor: {r: 1, g: 0.9, b: 0.4, a: 1}
+  wallSparkColor: {r: 1, g: 1, b: 1, a: 1}

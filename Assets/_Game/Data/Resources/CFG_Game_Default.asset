@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806ca51be249c5d4db68e43ace781368, type: 3}
+  m_Name: CFG_Game_Default
+  m_EditorClassIdentifier: 
+  tileSize: 1
+  playerRadius: 0.28
+  enemyRadius: 0.3
+  coreRadius: 0.4
+  bladeRadius: 0.1
+  bladeVisualWidth: 0.22
+  initialBladeEdges: 2
+  growthEdgeHalfUnits: 1
+  maxGrowthPerLevel: 0
+  maxBladeEdges: 0
+  maxSwordRadius: 4
+  growthHoverRadius: 0.12
+  growthNodeDeadZone: 0.08
+  fruitRadius: 0.2
+  playerHp: 4
+  enemyHp: 2
+  coreHp: 3
+  bladeDamage: 1
+  wallImpactDamage: 1
+  enemyDamage: 1
+  knockbackCells: 1
+  maxEnemiesPerRoom: 6
+  outerMotionStep: 0.1
+  contactTolerance: 0.002
+  numericalEpsilon: 0.00001
+  moveDuration: 0.18
+  rotateDuration: 0.2
+  wallPause: 0.05
+  returnScale: 0.6
+  knockbackDuration: 0.1
+  enemyMoveDuration: 0.14
+  growthDuration: 0.45
+  hitPausePerTarget: 0.035
+  hitPauseCap: 0.06
+  arrowFlashDuration: 0.1
+  playerSprite: {fileID: -898555132, guid: 2b9b79d6419d95840b9a33aef1a03135, type: 3}
+  chargerSprite: {fileID: -281079088, guid: 2b9b79d6419d95840b9a33aef1a03135, type: 3}
+  archerSprite: {fileID: -494575522, guid: 2b9b79d6419d95840b9a33aef1a03135, type: 3}
+  coreSprite: {fileID: -1579805571, guid: 2b9b79d6419d95840b9a33aef1a03135, type: 3}
+  wallSprite: {fileID: 21300000, guid: 341206c846cd6cc439a88bcdbc7c2d26, type: 3}
+  floorSprite: {fileID: 21300000, guid: 18152ad12ee8d9d4da411ff23455fc87, type: 3}
+  fruitSprite: {fileID: 772201527, guid: 2b9b79d6419d95840b9a33aef1a03135, type: 3}
+  exitSprite: {fileID: 718518920, guid: 2b9b79d6419d95840b9a33aef1a03135, type: 3}
+  boxSprite: {fileID: 21300000, guid: 536b3f163c36f4045b5f4588db3646cd, type: 3}
+  pressurePlateSprite: {fileID: 21300000, guid: 4abda533acec6694387f68a154a582df, type: 3}
+  uiFont: {fileID: 11400000, guid: 2ef59bafada3d354182f42263b135e1b, type: 2}
+  backgroundColor: {r: 0.95686275, g: 0.9254902, b: 0.8352941, a: 1}
+  floorTint: {r: 1, g: 1, b: 1, a: 1}
+  wallTint: {r: 1, g: 1, b: 1, a: 1}
+  bladeColor: {r: 1, g: 0.972549, b: 0.9098039, a: 1}
+  bladeFlashColor: {r: 0.9137255, g: 0.6862745, b: 0.27450982, a: 1}
+  trailOutColor: {r: 0.16078432, g: 0.24705882, b: 0.21960784, a: 0.34}
+  trailReturnColor: {r: 0.39215687, g: 0.5411765, b: 0.44313726, a: 0.22}
+  intentArrowColor: {r: 0.84313726, g: 0.4509804, b: 0.38039216, a: 1}
+  intentRayColor: {r: 0.84313726, g: 0.4509804, b: 0.38039216, a: 0.65}
+  exitLitColor: {r: 1, g: 1, b: 1, a: 1}
+  exitDimColor: {r: 0.74, g: 0.77, b: 0.69, a: 0.72}
+  hitSparkColor: {r: 0.9137255, g: 0.6862745, b: 0.27450982, a: 1}
+  wallSparkColor: {r: 0.16078432, g: 0.24705882, b: 0.21960784, a: 1}

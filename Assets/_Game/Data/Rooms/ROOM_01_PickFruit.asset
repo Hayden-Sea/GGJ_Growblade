@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7591ce839068cdf46ba056211e4208f3, type: 3}
+  m_Name: ROOM_01_PickFruit
+  m_EditorClassIdentifier: 
+  roomId: ROOM_Guide
+  goalText: "\u62FE\u53D6\u679C\u4F1A\u751F\u957F\uFF0C\u6E05\u7406\u654C\u4EBA\u5230\u8FBE\u51FA\u53E3\u5427"
+  initialPlayerHp: 1
+  width: 8
+  height: 7
+  wallCells:
+  - {x: 0, y: 0}
+  - {x: 0, y: 6}
+  - {x: 1, y: 0}
+  - {x: 1, y: 6}
+  - {x: 2, y: 0}
+  - {x: 2, y: 6}
+  - {x: 3, y: 0}
+  - {x: 3, y: 6}
+  - {x: 4, y: 0}
+  - {x: 4, y: 6}
+  - {x: 5, y: 0}
+  - {x: 5, y: 6}
+  - {x: 6, y: 0}
+  - {x: 6, y: 6}
+  - {x: 7, y: 0}
+  - {x: 7, y: 6}
+  - {x: 0, y: 0}
+  - {x: 7, y: 0}
+  - {x: 0, y: 1}
+  - {x: 7, y: 1}
+  - {x: 0, y: 2}
+  - {x: 7, y: 2}
+  - {x: 0, y: 3}
+  - {x: 7, y: 3}
+  - {x: 0, y: 4}
+  - {x: 7, y: 4}
+  - {x: 0, y: 5}
+  - {x: 7, y: 5}
+  - {x: 0, y: 6}
+  - {x: 7, y: 6}
+  playerSpawns:
+  - cell: {x: 1, y: 3}
+    facing: 0
+  enemySpawns:
+  - cell: {x: 5, y: 2}
+    kind: 0
+  boxSpawns: []
+  pressurePlateCells: []
+  hasCore: 0
+  coreCell: {x: -1, y: -1}
+  exitCell: {x: 6, y: 3}
+  hasReward: 0
+  rewardCell: {x: 0, y: 0}
+  schemaVersion: 2
+  objective: 0
+  fruitSpawns:
+  - fruitId: f_4_3
+    cell: {x: 4, y: 3}
+    growthValue: 1

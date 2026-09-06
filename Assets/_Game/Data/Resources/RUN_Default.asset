@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b156d2ff12bee2e4cb4e9045461bdb68, type: 3}
+  m_Name: RUN_Default
+  m_EditorClassIdentifier: 
+  stages:
+  - room: {fileID: 11400000, guid: de93acb17a0986e4396ea2956df91592, type: 2}
+  - room: {fileID: 11400000, guid: 7091eb6b49df05a4e84b24be7eb7e020, type: 2}
+  - room: {fileID: 11400000, guid: d937a079014c41a458340f7f0b057847, type: 2}
+  - room: {fileID: 11400000, guid: 2eb4e553fe8190c4fa8a109a0e083ffa, type: 2}
+  - room: {fileID: 11400000, guid: a755dfafa4530b14a9e299f4a8c95e7a, type: 2}
+  - room: {fileID: 11400000, guid: fc8990f52e6f53e49933c3e70781dcf9, type: 2}
+  - room: {fileID: 11400000, guid: a5519d074069e574ba283dbf175a8fa3, type: 2}
+  - room: {fileID: 11400000, guid: 1e5338775dfaf244eb95bf125604adb7, type: 2}
+  - room: {fileID: 11400000, guid: e66b28e995bcc7240ae4781758814282, type: 2}
+  - room: {fileID: 11400000, guid: 55b60833b633b0242a23de65618d6ef4, type: 2}
+  - room: {fileID: 11400000, guid: cf8469620cf01d042b64ee15e9425e90, type: 2}
+  - room: {fileID: 11400000, guid: 3f9805bfafa49304db6fc725c0313163, type: 2}
