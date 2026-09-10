@@ -18,11 +18,6 @@ MonoBehaviour:
   coreRadius: 0.4
   bladeRadius: 0.1
   bladeVisualWidth: 0.22
-  initialBladeEdges: 2
-  growthEdgeHalfUnits: 1
-  maxGrowthPerLevel: 0
-  maxBladeEdges: 0
-  maxSwordRadius: 4
   growthHoverRadius: 0.12
   growthNodeDeadZone: 0.08
   fruitRadius: 0.2

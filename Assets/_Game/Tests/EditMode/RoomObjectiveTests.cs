@@ -10,7 +10,6 @@ namespace SwordGame.Tests
         {
             var room = ScriptableObject.CreateInstance<RoomDefinition>();
             room.objective = objective;
-            room.MarkMigrated();
             return room;
         }
 
@@ -24,13 +23,12 @@ namespace SwordGame.Tests
         }
 
         [Test]
-        public void LegacyDestroyCore_IsMergedIntoClearEnemiesAndRequiresCoreAndGuards()
+        public void ClearEnemiesAndExit_RequiresCoreAndGuards()
         {
-            var room = MakeRoom(RoomDefinition.LevelObjective.DestroyCore);
+            var room = MakeRoom(RoomDefinition.LevelObjective.ClearEnemiesAndExit);
             var state = StateWithoutNormalEnemies();
             state.enemies.Add(new EnemyState { actorId = 100, kind = EnemyKind.Core, cell = new Vector2Int(6, 5), hp = 3 });
 
-            Assert.AreEqual(RoomDefinition.LevelObjective.ClearEnemiesAndExit, room.EffectiveObjective);
             Assert.IsFalse(RunController.IsExitObjectiveCleared(room, state));
             state.enemies.Add(new EnemyState { actorId = 1, kind = EnemyKind.Charger, cell = new Vector2Int(5, 5), hp = 1 });
             state.enemies.RemoveAll(e => e.kind == EnemyKind.Core);

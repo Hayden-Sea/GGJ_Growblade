@@ -6,4 +6,4 @@ Unless a file states otherwise, the original code, writing, and original game co
 
 You may share and adapt this material for non-commercial purposes when you provide attribution and distribute adaptations under the same license.
 
-Third-party and separately licensed components retain their original terms. Their source and license information is documented in [the development document](Assets/docs/sword-does-not-fit-development-tuanjie-1.10.0.md) and [the audio attribution file](Assets/_Game/Audio/THIRD_PARTY_AUDIO.md). The bundled Noto Sans SC font remains under the SIL Open Font License 1.1.
+Third-party and separately licensed components retain their original terms. Their source and license information is documented in [the development document](Assets/docs/Growblade-development.md) and [the audio attribution file](Assets/_Game/Audio/THIRD_PARTY_AUDIO.md). The bundled Noto Sans SC font remains under the SIL Open Font License 1.1.

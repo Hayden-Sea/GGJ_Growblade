@@ -270,14 +270,6 @@ namespace SwordGame
             return null;
         }
 
-        public bool HasAliveNormalEnemies()
-        {
-            for (int i = 0; i < enemies.Count; i++)
-                if (enemies[i].kind != EnemyKind.Core && enemies[i].kind != EnemyKind.Box && enemies[i].hp > 0)
-                    return true;
-            return false;
-        }
-
         public bool HasAliveClearableEnemies()
         {
             for (int i = 0; i < enemies.Count; i++)

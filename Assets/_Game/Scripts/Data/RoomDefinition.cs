@@ -41,20 +41,12 @@ namespace SwordGame
         public bool hasCore;
         public Vector2Int coreCell;
 
-        [Tooltip("普通房的出口格；核心房可为任意格（胜利条件为摧毁核心）")]
+        [Tooltip("玩家完成本关目标后，需要到达的出口格")]
         public Vector2Int exitCell;
-
-        [Tooltip("旧奖励已停用（v1.3），仅保留序列化字段用于回溯")]
-        public bool hasReward;
-        public Vector2Int rewardCell;
-
-        // ---- v1.3 独立关字段（文档 10.6）----
 
         public enum LevelObjective
         {
             ClearEnemiesAndExit = 0,
-            // 仅用于读取旧资产；EffectiveObjective 会把它迁移为 ClearEnemiesAndExit。
-            DestroyCore = 1,
             PushBoxesToPlatesAndExit = 2,
             ClearEnemiesAndPlatesAndExit = 3,
             ReachExit = 4,
@@ -68,33 +60,14 @@ namespace SwordGame
             [Min(1)] public int growthValue; // 1 = 普通果；2..9 = 必须连续完成的多生长果
         }
 
-        [Tooltip("0 = 旧资产（按 hasCore 解释目标）；2 = 已迁移")]
-        [SerializeField] private int schemaVersion;
-
         public LevelObjective objective = LevelObjective.ReachExit;
         public List<FruitSpawnDef> fruitSpawns = new List<FruitSpawnDef>();
 
-        public int SchemaVersion => schemaVersion;
-
-        public void MarkMigrated() => schemaVersion = 2;
-
-        /// <summary>兼容期唯一读取入口：旧资产按 hasCore 解释目标类型。</summary>
-        public LevelObjective EffectiveObjective
-        {
-            get
-            {
-                var resolved = schemaVersion >= 2
-                    ? objective
-                    : (hasCore ? LevelObjective.DestroyCore : LevelObjective.ClearEnemiesAndExit);
-                return resolved == LevelObjective.DestroyCore ? LevelObjective.ClearEnemiesAndExit : resolved;
-            }
-        }
-
-        public bool RequiresEnemyClear => EffectiveObjective == LevelObjective.ClearEnemiesAndExit ||
-                                          EffectiveObjective == LevelObjective.ClearEnemiesAndPlatesAndExit;
-        public bool RequiresPlates => EffectiveObjective == LevelObjective.PushBoxesToPlatesAndExit ||
-                                      EffectiveObjective == LevelObjective.ClearEnemiesAndPlatesAndExit;
-        public bool IsExitOpenByDefault => EffectiveObjective == LevelObjective.ReachExit;
+        public bool RequiresEnemyClear => objective == LevelObjective.ClearEnemiesAndExit ||
+                                          objective == LevelObjective.ClearEnemiesAndPlatesAndExit;
+        public bool RequiresPlates => objective == LevelObjective.PushBoxesToPlatesAndExit ||
+                                      objective == LevelObjective.ClearEnemiesAndPlatesAndExit;
+        public bool IsExitOpenByDefault => objective == LevelObjective.ReachExit;
 
         public int ResolveInitialPlayerHp(GameConfig cfg)
         {

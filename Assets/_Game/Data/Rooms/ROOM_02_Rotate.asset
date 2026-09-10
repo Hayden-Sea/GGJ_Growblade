@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7591ce839068cdf46ba056211e4208f3, type: 3}
-  m_Name: ROOM_Hall_B
+  m_Name: ROOM_02_Rotate
   m_EditorClassIdentifier: 
-  roomId: ROOM_Box
-  goalText: "\u6572\u7BB1\u5B50"
+  roomId: ROOM_Rotate
+  goalText: "\u8C03\u6574\u4F4D\u7F6E"
   initialPlayerHp: 1
-  width: 11
+  width: 10
   height: 9
   wallCells:
+  - {x: 3, y: 7}
   - {x: 0, y: 0}
   - {x: 0, y: 8}
   - {x: 1, y: 0}
@@ -38,58 +39,50 @@ MonoBehaviour:
   - {x: 8, y: 8}
   - {x: 9, y: 0}
   - {x: 9, y: 8}
-  - {x: 10, y: 0}
-  - {x: 10, y: 8}
   - {x: 0, y: 0}
-  - {x: 10, y: 0}
+  - {x: 9, y: 0}
   - {x: 0, y: 1}
-  - {x: 10, y: 1}
+  - {x: 9, y: 1}
   - {x: 0, y: 2}
-  - {x: 10, y: 2}
+  - {x: 9, y: 2}
   - {x: 0, y: 3}
-  - {x: 10, y: 3}
+  - {x: 9, y: 3}
   - {x: 0, y: 4}
-  - {x: 10, y: 4}
+  - {x: 9, y: 4}
   - {x: 0, y: 5}
-  - {x: 10, y: 5}
+  - {x: 9, y: 5}
   - {x: 0, y: 6}
-  - {x: 10, y: 6}
-  - {x: 0, y: 7}
-  - {x: 10, y: 7}
-  - {x: 0, y: 8}
-  - {x: 10, y: 8}
-  - {x: 1, y: 6}
-  - {x: 2, y: 6}
-  - {x: 3, y: 6}
   - {x: 9, y: 6}
-  - {x: 8, y: 6}
-  - {x: 7, y: 6}
-  playerSpawns:
-  - cell: {x: 3, y: 7}
-    facing: 2
-  - cell: {x: 8, y: 5}
-    facing: 2
-  - cell: {x: 6, y: 3}
-    facing: 1
-  - cell: {x: 6, y: 7}
-    facing: 3
-  enemySpawns:
-  - cell: {x: 7, y: 3}
-    kind: 0
-  - cell: {x: 3, y: 3}
-    kind: 0
-  boxSpawns:
-  - {x: 7, y: 7}
-  pressurePlateCells:
+  - {x: 0, y: 7}
   - {x: 9, y: 7}
+  - {x: 0, y: 8}
+  - {x: 9, y: 8}
+  - {x: 1, y: 4}
+  - {x: 2, y: 4}
+  - {x: 3, y: 6}
+  - {x: 3, y: 4}
+  - {x: 4, y: 4}
+  - {x: 5, y: 4}
+  - {x: 6, y: 4}
+  - {x: 7, y: 4}
+  playerSpawns:
+  - cell: {x: 2, y: 7}
+    facing: 2
+  enemySpawns:
+  - cell: {x: 7, y: 6}
+    kind: 0
+  - cell: {x: 3, y: 2}
+    kind: 0
+  boxSpawns: []
+  pressurePlateCells: []
   hasCore: 0
   coreCell: {x: 0, y: 0}
-  exitCell: {x: 5, y: 3}
-  hasReward: 0
-  rewardCell: {x: 0, y: 0}
-  schemaVersion: 2
-  objective: 3
+  exitCell: {x: 2, y: 2}
+  objective: 0
   fruitSpawns:
-  - fruitId: f_5_4
-    cell: {x: 5, y: 4}
+  - fruitId: f_1_5
+    cell: {x: 1, y: 5}
+    growthValue: 1
+  - fruitId: f_8_3
+    cell: {x: 8, y: 3}
     growthValue: 1

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7591ce839068cdf46ba056211e4208f3, type: 3}
-  m_Name: ROOM_Pillar_B
+  m_Name: ROOM_09_Core
   m_EditorClassIdentifier: 
-  roomId: ROOM_Defense
-  goalText: "\u51F8"
-  initialPlayerHp: 1
+  roomId: ROOM_Core
+  goalText: 
+  initialPlayerHp: 0
   width: 13
   height: 11
   wallCells:
@@ -66,34 +66,44 @@ MonoBehaviour:
   - {x: 12, y: 9}
   - {x: 0, y: 10}
   - {x: 12, y: 10}
+  - {x: 4, y: 3}
+  - {x: 8, y: 3}
+  - {x: 4, y: 7}
+  - {x: 8, y: 7}
+  - {x: 5, y: 3}
+  - {x: 7, y: 3}
+  - {x: 8, y: 4}
+  - {x: 8, y: 6}
+  - {x: 4, y: 6}
+  - {x: 4, y: 4}
+  - {x: 5, y: 7}
+  - {x: 7, y: 7}
   playerSpawns:
-  - cell: {x: 4, y: 5}
-    facing: 0
   - cell: {x: 2, y: 2}
     facing: 0
+  - cell: {x: 10, y: 2}
+    facing: 2
+  - cell: {x: 6, y: 1}
+    facing: 1
+  - cell: {x: 10, y: 5}
+    facing: 2
   enemySpawns:
-  - cell: {x: 9, y: 3}
-    kind: 0
-  - cell: {x: 9, y: 8}
+  - cell: {x: 9, y: 2}
     kind: 0
   - cell: {x: 3, y: 8}
     kind: 0
-  - cell: {x: 3, y: 3}
-    kind: 0
-  - cell: {x: 6, y: 8}
-    kind: 0
-  - cell: {x: 6, y: 3}
-    kind: 0
+  - cell: {x: 9, y: 8}
+    kind: 1
   boxSpawns: []
   pressurePlateCells: []
-  hasCore: 0
-  coreCell: {x: 0, y: 0}
-  exitCell: {x: 9, y: 5}
-  hasReward: 0
-  rewardCell: {x: 0, y: 0}
-  schemaVersion: 2
-  objective: 0
+  hasCore: 1
+  coreCell: {x: 6, y: 5}
+  exitCell: {x: 6, y: 9}
+  objective: 1
   fruitSpawns:
-  - fruitId: f_7_5
-    cell: {x: 7, y: 5}
-    growthValue: 7
+  - fruitId: f_4_2
+    cell: {x: 4, y: 2}
+    growthValue: 1
+  - fruitId: f_9_7
+    cell: {x: 9, y: 7}
+    growthValue: 1

@@ -15,15 +15,6 @@ namespace SwordGame
         public float bladeVisualWidth = 0.22f;
 
         [Header("成长")]
-        public int initialBladeEdges = 2;          // 0.5 格根段 + 0.3 格尖段
-        [Tooltip("旧序列化字段，不参与玩法逻辑；实际成长单位固定为 SwordGeometry.GrowthNodeUnits = 5（0.5 格）")]
-        public int growthEdgeHalfUnits = 1;
-        [Tooltip("已废弃：仅用于反序列化兼容，不参与玩法逻辑")]
-        public int maxGrowthPerLevel;
-        [Tooltip("已废弃：仅用于反序列化兼容，不参与玩法逻辑")]
-        public int maxBladeEdges;
-        [Tooltip("已废弃：仅用于反序列化兼容，不参与玩法逻辑")]
-        public float maxSwordRadius = 4.0f;
         public float growthHoverRadius = 0.12f;    // 鼠标到候选中心线的最大吸附距离
         public float growthNodeDeadZone = 0.08f;   // 已有结点中心的无选择区半径
         public float fruitRadius = 0.20f;          // 剑与果接触圆

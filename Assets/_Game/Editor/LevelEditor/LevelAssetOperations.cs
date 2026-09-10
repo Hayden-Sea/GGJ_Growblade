@@ -69,7 +69,6 @@ namespace SwordGame.EditorTools
             }
             room.playerSpawns = new List<SpawnCandidate> { new SpawnCandidate { cell = new Vector2Int(2, 2), facing = 0 } };
             room.exitCell = new Vector2Int(room.width - 3, room.height - 3);
-            room.MarkMigrated();
             AssetDatabase.CreateAsset(room, path);
             AddToList(room);
             return room;

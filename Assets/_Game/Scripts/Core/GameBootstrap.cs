@@ -471,8 +471,8 @@ namespace SwordGame
             Hud.SetRoomInfo($"{Run.StageIndex + 1}/{Run.StageCount}",
                 Run.RoomDef.IsExitOpenByDefault ? Run.RoomDef.goalText :
                 isExitObjective && Run.RoomCleared
-                    ? (Run.RoomDef.EffectiveObjective == RoomDefinition.LevelObjective.PushBoxesToPlatesAndExit ? "机关已启动" :
-                       Run.RoomDef.EffectiveObjective == RoomDefinition.LevelObjective.ClearEnemiesAndPlatesAndExit ? "敌人已清除，机关已启动" : "房间已清理")
+                    ? (Run.RoomDef.objective == RoomDefinition.LevelObjective.PushBoxesToPlatesAndExit ? "机关已启动" :
+                       Run.RoomDef.objective == RoomDefinition.LevelObjective.ClearEnemiesAndPlatesAndExit ? "敌人已清除，机关已启动" : "房间已清理")
                     : Run.RoomDef.goalText,
                 $"总节数 {state.sword.edges.Count} · 果 {CountRemainingFruits()} · 成长点 {state.growthCredits}");
 
@@ -512,9 +512,9 @@ namespace SwordGame
                 _roomView.SetExitVisible(true);
                 _roomView.SetExitLit(true);
                 if (state.player.cell != Run.ExitCell)
-                    Hud.ShowToast(Run.RoomDef.EffectiveObjective == RoomDefinition.LevelObjective.PushBoxesToPlatesAndExit
+                    Hud.ShowToast(Run.RoomDef.objective == RoomDefinition.LevelObjective.PushBoxesToPlatesAndExit
                         ? "机关已启动：出口出现了。" :
-                        Run.RoomDef.EffectiveObjective == RoomDefinition.LevelObjective.ClearEnemiesAndPlatesAndExit
+                        Run.RoomDef.objective == RoomDefinition.LevelObjective.ClearEnemiesAndPlatesAndExit
                             ? "敌人已清除，机关已启动：出口出现了。" : "房间已清理：前往出口继续。", 2f);
             }
             else if (Run.RoomDef.RequiresPlates)

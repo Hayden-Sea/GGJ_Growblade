@@ -11,7 +11,6 @@ namespace SwordGame.Editor
     {
         public const string AtlasPath = "Assets/_Game/Art/Garden/Resources/DoodleAtlas.png";
         private const string ConfigPath = "Assets/_Game/Data/Resources/CFG_Game_Default.asset";
-        private const string BackupPath = "Assets/_Game/Art/Garden/CFG_PreGarden.asset";
 
         [MenuItem("Tools/剑会变长/Apply Garden Art")]
         public static void Apply()
@@ -67,8 +66,6 @@ namespace SwordGame.Editor
             if (icons.Count != 8) throw new System.InvalidOperationException("Expected exactly eight garden sprites.");
             var cfg = AssetDatabase.LoadAssetAtPath<GameConfig>(ConfigPath);
             if (cfg == null) throw new System.InvalidOperationException("Missing existing game config.");
-            if (AssetDatabase.LoadAssetAtPath<GameConfig>(BackupPath) == null && !AssetDatabase.CopyAsset(ConfigPath, BackupPath))
-                throw new System.InvalidOperationException("Cannot preserve original art config.");
             Undo.RecordObject(cfg, "Apply garden art");
             cfg.playerSprite = icons["Knight"]; cfg.chargerSprite = icons["Charger"];
             cfg.archerSprite = icons["Archer"]; cfg.coreSprite = icons["Core"];

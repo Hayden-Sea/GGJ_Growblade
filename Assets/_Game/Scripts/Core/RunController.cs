@@ -275,13 +275,13 @@ namespace SwordGame
             if (room == null || state == null) return false;
             bool enemiesCleared = !state.HasAliveClearableEnemies();
             bool platesActive = state.AreAllBoxesOn(room.pressurePlateCells);
-            if (room.EffectiveObjective == RoomDefinition.LevelObjective.ReachExit)
+            if (room.objective == RoomDefinition.LevelObjective.ReachExit)
                 return true;
-            if (room.EffectiveObjective == RoomDefinition.LevelObjective.ClearEnemiesAndExit)
+            if (room.objective == RoomDefinition.LevelObjective.ClearEnemiesAndExit)
                 return enemiesCleared;
-            if (room.EffectiveObjective == RoomDefinition.LevelObjective.PushBoxesToPlatesAndExit)
+            if (room.objective == RoomDefinition.LevelObjective.PushBoxesToPlatesAndExit)
                 return platesActive;
-            if (room.EffectiveObjective == RoomDefinition.LevelObjective.ClearEnemiesAndPlatesAndExit)
+            if (room.objective == RoomDefinition.LevelObjective.ClearEnemiesAndPlatesAndExit)
                 return enemiesCleared && platesActive;
             return false;
         }

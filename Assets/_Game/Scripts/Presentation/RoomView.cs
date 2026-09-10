@@ -61,7 +61,6 @@ namespace SwordGame
         {
             if (_exitMarker != null) _exitMarker.gameObject.SetActive(visible);
         }
-        public void SetRewardUsed(bool used) { } // Legacy reward is inactive in v1.3+.
         public void Clear()
         {
             for (int i = transform.childCount - 1; i >= 0; i--) Destroy(transform.GetChild(i).gameObject);

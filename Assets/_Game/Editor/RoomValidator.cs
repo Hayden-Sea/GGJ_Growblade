@@ -53,24 +53,6 @@ namespace SwordGame.EditorTools
                 : $"[RoomValidator] {errorCount} 个房间存在硬错误");
         }
 
-        [MenuItem(MenuRoot + "Migrate Rooms To v1.3 Schema")]
-        public static void MigrateAllRooms()
-        {
-            var guids = AssetDatabase.FindAssets("t:RoomDefinition", new[] { "Assets/_Game" });
-            int migrated = 0;
-            foreach (var guid in guids)
-            {
-                var room = AssetDatabase.LoadAssetAtPath<RoomDefinition>(AssetDatabase.GUIDToAssetPath(guid));
-                if (room == null || room.SchemaVersion >= 2)
-                    continue;
-                room.MarkMigrated(); // 旧核心关由 EffectiveObjective 统一解释为“清除敌人”
-                EditorUtility.SetDirty(room);
-                migrated++;
-            }
-            AssetDatabase.SaveAssets();
-            Debug.Log($"[RoomValidator] 已迁移 {migrated} 个房间资产到 schemaVersion=2");
-        }
-
         /// <summary>快速校验：硬错误 + 设计警告（文档 19.4）。</summary>
         public static List<Issue> QuickValidate(RoomDefinition room, GameConfig cfg)
         {
@@ -211,9 +193,6 @@ namespace SwordGame.EditorTools
             {
                 issues.Add(new Issue { severity = "Error", code = "SPAWN_BLOCK", message = "出生点不合法，无法进行可达性检查" });
             }
-
-            if (room.SchemaVersion < 2)
-                issues.Add(new Issue { severity = "Warning", code = "SCHEMA", message = "旧 schema 资产：建议执行迁移（目标类型 / 果配置显式化）" });
 
             return issues;
         }

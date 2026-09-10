@@ -44,9 +44,7 @@
 
 ## 文档
 
-- [GameJam 发布说明](Assets/docs/gamejam-release-v1.12.0.md)
-- [完整开发与规则文档](Assets/docs/sword-does-not-fit-development-tuanjie-1.10.0.md)
-- [美术方向与接入说明](Assets/docs/art-direction-garden-v1.5.md)
+- [完整开发、规则、编辑器与素材授权文档](Assets/docs/Growblade-development.md)
 - [音乐音效来源与授权](Assets/_Game/Audio/THIRD_PARTY_AUDIO.md)
 - [版本记录](CHANGELOG.md)
 

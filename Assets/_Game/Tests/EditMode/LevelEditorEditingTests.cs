@@ -13,7 +13,7 @@ namespace SwordGame.Tests
         public void Setup()
         {
             room = ScriptableObject.CreateInstance<RoomDefinition>();
-            room.width = 7; room.height = 7; room.MarkMigrated();
+            room.width = 7; room.height = 7;
             room.wallCells.Clear();
             for (int x = 0; x < 7; x++) { room.wallCells.Add(new Vector2Int(x,0)); room.wallCells.Add(new Vector2Int(x,6)); }
             for (int y = 1; y < 6; y++) { room.wallCells.Add(new Vector2Int(0,y)); room.wallCells.Add(new Vector2Int(6,y)); }

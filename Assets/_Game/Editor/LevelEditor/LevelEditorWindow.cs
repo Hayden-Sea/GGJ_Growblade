@@ -650,14 +650,13 @@ namespace SwordGame.EditorTools
                 RoomDefinition.LevelObjective.ClearEnemiesAndPlatesAndExit,
             };
             var objectiveNames = new[] { "直接离开", "清除敌人", "打开机关", "清敌＋机关" };
-            int objectiveIndex = System.Array.IndexOf(objectiveValues, _room.EffectiveObjective);
+            int objectiveIndex = System.Array.IndexOf(objectiveValues, _room.objective);
             if (objectiveIndex < 0) objectiveIndex = 0;
             int nextObjectiveIndex = EditorGUILayout.Popup("目标类型", objectiveIndex, objectiveNames);
             if (nextObjectiveIndex != objectiveIndex)
             {
                 Undo.RecordObject(_room, "Change level objective");
                 _room.objective = objectiveValues[nextObjectiveIndex];
-                _room.MarkMigrated();
                 MarkEdited("已修改目标类型");
             }
 

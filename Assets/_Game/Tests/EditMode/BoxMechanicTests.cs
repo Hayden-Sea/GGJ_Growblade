@@ -64,7 +64,6 @@ namespace SwordGame.Tests
         {
             var room = ScriptableObject.CreateInstance<RoomDefinition>();
             room.objective = RoomDefinition.LevelObjective.PushBoxesToPlatesAndExit;
-            room.MarkMigrated();
             room.pressurePlateCells.Add(new Vector2Int(9, 5));
             var state = State(new Vector2Int(8, 5));
             Assert.IsFalse(RunController.IsExitObjectiveCleared(room, state));
