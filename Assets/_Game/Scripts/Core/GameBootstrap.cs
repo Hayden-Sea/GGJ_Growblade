@@ -113,6 +113,7 @@ namespace SwordGame
             Hud.OnFirstLevelTutorialClosed += BeginFirstLevelAfterTutorial;
             Hud.OnQuitGameClicked += QuitGame;
             Hud.OnUnlockAllConfirmed += UnlockAllLevels;
+            Hud.OnLanguageChanged += OnBeatRefreshed;
 
             // 运行事件
             Run.OnRoomLoaded += OnRoomLoaded;
@@ -390,8 +391,8 @@ namespace SwordGame
             Presenter.SetViews(_playerView, _swordPivot, _swordView, _enemyViews, _intentViews);
 
             Hud.SetHearts(state.player.hp, room.ResolveInitialPlayerHp(Config));
-            Hud.SetRoomInfo($"{index + 1}/{Run.StageCount}", room.goalText,
-                $"总节数 {state.sword.edges.Count} · 果 {CountRemainingFruits()} · 成长点 {state.growthCredits}");
+            Hud.SetRoomInfo($"{index + 1}/{Run.StageCount}", GameLocalization.RoomGoal(room.roomId, room.goalText),
+                GameLocalization.GrowthSummary(state.sword.edges.Count, CountRemainingFruits(), state.growthCredits));
         }
 
         private readonly Dictionary<string, GameObject> _fruitViews = new Dictionary<string, GameObject>();
@@ -473,8 +474,8 @@ namespace SwordGame
                 isExitObjective && Run.RoomCleared
                     ? (Run.RoomDef.objective == RoomDefinition.LevelObjective.PushBoxesToPlatesAndExit ? "机关已启动" :
                        Run.RoomDef.objective == RoomDefinition.LevelObjective.ClearEnemiesAndPlatesAndExit ? "敌人已清除，机关已启动" : "房间已清理")
-                    : Run.RoomDef.goalText,
-                $"总节数 {state.sword.edges.Count} · 果 {CountRemainingFruits()} · 成长点 {state.growthCredits}");
+                    : GameLocalization.RoomGoal(Run.RoomDef.roomId, Run.RoomDef.goalText),
+                GameLocalization.GrowthSummary(state.sword.edges.Count, CountRemainingFruits(), state.growthCredits));
 
             // 移除死亡敌人视图
             var dead = new List<int>();

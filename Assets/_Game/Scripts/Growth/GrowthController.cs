@@ -121,8 +121,7 @@ namespace SwordGame
         private string Describe(SwordState preview, bool hasSel)
         {
             float reach = SwordGeometry.MaxReachRadius(preview);
-            string head = hasSel ? "左键生长 · " : "移动鼠标预览生长位置 · ";
-            return $"{head}总节数 {preview.edges.Count} · 最大触及 {reach:0.0} 格";
+            return GameLocalization.GrowthPreview(hasSel, preview.edges.Count, reach);
         }
     }
 }

@@ -1,7 +1,7 @@
 # Growblade / 剑会变长
 
 - **参赛项目：**《GGJ翌光计划2026》
-- **发布版本：** v1.12.0 GameJam Release
+- **发布版本：** v1.13.0
 - **队伍：** 你说的队
 - **作者：** 海蛋
 
@@ -32,7 +32,7 @@
 
 ## 下载与运行
 
-从 [GitHub Releases](https://github.com/Hayden-Sea/GGJ_Growblade/releases) 下载 `Growblade-v1.12.0-GameJam-Windows.zip`，完整解压后运行 `Growblade.exe`。不要将 EXE 与 `Growblade_Data`、运行库分开。
+从 [GitHub Releases](https://github.com/Hayden-Sea/GGJ_Growblade/releases) 下载 `Growblade-v1.13.0-WebGL.zip`。完整解压后，通过 HTTP 服务访问根目录的 `index.html`；压缩包根目录已包含运行所需的 `Build/` 与 `TemplateData/`。
 
 ## 从源码运行
 

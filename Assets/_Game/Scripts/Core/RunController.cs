@@ -437,7 +437,7 @@ namespace SwordGame
         private string BuildStats()
         {
             float longestLength = Current != null ? SwordGeometry.MaxReachRadius(Current.sword) : 0f;
-            return $"行动了 {TotalBeats} 拍\n剑身最长长度 {longestLength:0.0} 格";
+            return GameLocalization.ResultStats(TotalBeats, longestLength);
         }
 
         private readonly HashSet<string> _tutorialShown = new HashSet<string>();

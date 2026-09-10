@@ -4,10 +4,12 @@
 
 | 文档版本 | 日期 | 内容 |
 | --- | --- | --- |
+| 1.13.0-doc1 | 2026-09-10 | 发布 v1.13.0：加入四语言与可扩展设置界面，修复多语言字体和排版，精简 HUD，补充 WebGL 构建发布流程。 |
+| 1.12.0-doc5 | 2026-09-10 | 补充 Codex 通过 Codely MCP 桥接团结编辑器的方法、调试工具入口、验证闭环与故障排查。 |
 | 1.12.0-doc4 | 2026-09-10 | 清理弃用代码与未引用资产；12 个关卡统一迁入并按顺序命名于 `Assets/_Game/Data/Rooms`；删除旧奖励、旧目标迁移和废弃成长配置字段；整理本地构建与演示产物。 |
 | 1.12.0-doc3 | 2026-09-10 | 以当前代码、配置、12 关资产和 UI 为唯一事实来源重写文档；删除旧版本方案、重复验收记录和已作废规则；合并玩法、编辑器、构建及素材授权说明。 |
 
-本文描述 **v1.12.0 GameJam Release** 的实际行为，用于后续维护和关卡制作。若本文与实现出现差异，应先核对代码与序列化资产，再在同一次改动中更新本文。不要从 Git 历史中的旧交接文档恢复玩法。
+本文描述 **v1.13.0** 的实际行为，用于后续维护和关卡制作。若本文与实现出现差异，应先核对代码与序列化资产，再在同一次改动中更新本文。不要从 Git 历史中的旧交接文档恢复玩法。
 
 ## 1. 项目概况
 
@@ -112,9 +114,9 @@
 
 ## 7. 界面与音频
 
-标题页显示《剑会变长》、开始冒险、退出游戏和 `by 海蛋`。第一关开始时显示一次简短教程，说明移动、Q/E 转剑、Space 等待一拍、拾果生长及本关目标。HUD 显示关卡序号、生命、作者填写的目标说明、剑节数、剩余果和待生长次数。
+运行时界面支持 English、简体中文、日本語与한국어；首次启动默认 English，选择通过 PlayerPrefs 键 `growblade_language` 持久化。语言由 `GameLocalization.SupportedLanguages` 数据目录驱动，设置页自动生成选项；新增语言不应修改 HUD 布局代码。标题页显示游戏名、Play、Settings、Quit 和作者署名。第一关开始时显示一次简短教程，说明移动、Q/E 转剑、Space 等待一拍、拾果生长及本关目标。HUD 显示关卡序号、生命、作者填写的目标说明、剑节数、剩余果和待生长次数。
 
-暂停菜单提供继续、重试、选择关卡、音乐音量、音效音量和镜头轻微震动。音乐与音效音量分别存入 PlayerPrefs 的 `sdnf_music` 和 `sdnf_sfx`。
+标题页和暂停菜单都可进入同一个设置面板，集中提供语言、音乐音量、音效音量和镜头轻微震动；关闭设置后回到进入前的界面。音乐与音效音量分别存入 PlayerPrefs 的 `sdnf_music` 和 `sdnf_sfx`。
 
 音频系统包含 1 条固定循环 BGM 和 12 类事件音效：挥剑、剑撞墙、命中、击退撞墙、敌人移动、弩手射击、生长、受伤、胜利、失败、按钮点击和玩家移动。胜利或失败乐句播放时会压低 BGM；进入下一关、重试或离开结算流程时停止结算乐句。
 
@@ -154,13 +156,56 @@ UI 使用 `Scale With Screen Size`，参考分辨率为 1280×720，宽高匹配
 
 运行时模型与 GameObject 表现分离。碰撞、成长候选、目标和解锁规则应优先在纯逻辑层修改，并同步对应 EditMode 测试。当前测试目录包含 99 个 `[Test]` / `[TestCase]` 声明，覆盖几何、拍模拟、果、成长、箱子、目标、弩手节奏、移动碰撞、音频、解锁和编辑器格子操作。
 
+### Codex 与团结编辑器 MCP 调试
+
+本项目可以让 Codex 通过 Codely MCP 直接读取和控制团结编辑器，用于编译、Console 检查、场景与资产检查、Play Mode 运行时诊断、输入模拟和画面捕获。它与游戏代码中的 `PlaytestBridge` 无关：前者连接外部 AI 与编辑器，后者只负责关卡编辑器的一键试玩参数传递。
+
+项目已具备以下桥接组件：
+
+- `Packages/manifest.json` 中的 `cn.tuanjie.codely.bridge`，当前版本为 `1.0.80`。
+- 全局 Codely CLI `@unity-china/codely-cli`，本机验证版本为 `1.0.0-rc.58`。
+- 项目根目录运行时生成的 `.com-unity-codely.json` 握手文件。该文件记录动态端口与心跳，不应手工修改、复制端口或提交到 Git。
+
+在新的 Codex 环境中，将下面配置加入用户级 `~/.codex/config.toml`，并把命令和项目路径改成当前机器的实际路径：
+
+```toml
+[mcp_servers.tuanjie-editor]
+command = 'C:\Users\<用户名>\AppData\Roaming\npm\codely.cmd'
+args = ["serve", "unity-mcp", "--stdio", "--unity-project-path", 'C:\path\to\WuHanGGJ']
+default_tools_approval_mode = "writes"
+```
+
+若机器尚未安装 CLI，可使用 `npm install -g @unity-china/codely-cli`。配置完成后启动团结编辑器并打开本项目，等待导入和编译结束，再重新启动 Codex 任务以加载 `mcp__tuanjie_editor__*` 工具。首次连接应调用 `unity_editor` 的 `get_state`，确认活动场景为 `Assets/_Game/Scenes/Game.scene`、`isCompiling=false`，且返回的渲染管线为 URP。本项目已在 2026-09-10 实际通过该调用验证连接成功。
+
+常用工具如下：
+
+| MCP 工具 | 用途 |
+| --- | --- |
+| `unity_editor` | 读取状态、等待空闲、触发完整 C# 编译流程、控制 Play Mode |
+| `unity_console` | 清空并读取 Console，确认本次操作产生的错误与警告 |
+| `unity_scene`、`unity_gameobject`、`unity_asset` | 检查或修改场景、层级、组件和资产 |
+| `exec_editor_script` | 在 Edit Mode 执行使用 `UnityEditor` API 的诊断或批量编辑脚本 |
+| `exec_runtime_script` | 自动进入 Play Mode，通过游戏 API 检查运行时状态和行为 |
+| `unity_gameview`、`unity_screenshot` | 设置 Game View 分辨率，并完成静态或录制式视觉检查 |
+
+每次调试遵循同一闭环：
+
+1. `unity_editor.get_state` 读取真实状态，随后 `unity_console.clear` 建立新的日志边界，并用 `unity_editor.wait_for_idle` 等待导入结束。
+2. 编辑代码或资产。优先让逻辑测试返回结构化数据，不要只凭截图判断碰撞、状态或可见性。
+3. 修改 C# 后调用 `unity_editor.start_compilation_pipeline`，再调用 `unity_console.get` 检查这一轮编译产生的 Console 信息。
+4. 涉及运行时行为时使用 `exec_runtime_script` 调用游戏现有 API 验证；动画、输入和时序问题通过同一次运行时脚本触发并录制。继续编辑时使用 `exec_editor_script`，它会自动回到 Edit Mode。
+5. 结束前确认场景保存状态、运行房间、Console 和相关 EditMode 测试；视觉改动最后再截取 Game View 检查。
+
+连接失败时先确认团结编辑器仍打开且未卡在编译，检查 `.com-unity-codely.json` 的 `reason` 是否为 `ready`、`last_heartbeat` 是否持续更新。编辑器菜单 `AI > Check Connections` 可检查 Bridge 连接。端口冲突时让 Bridge 自动重建握手信息，不要在 Codex 配置中写死 `unity_port`。若 Codex 没有出现 `mcp__tuanjie_editor__*` 工具，检查用户级 TOML 配置、`codely.cmd serve unity-mcp --stdio --unity-project-path <项目路径>` 是否可启动，然后重启 Codex 任务。
+
 ## 10. 构建与发布
 
 - 产品名和可执行文件：`Growblade` / `Growblade.exe`
 - Windows 输出目录：`Builds/Windows/`
 - WebGL 输出目录：`Builds/WebGL/`
-- 当前工程版本：`1.12.0`
-- v1.12.0 Windows 64 位最终构建记录：成功，入口场景为 `Assets/_Game/Scenes/Game.scene`，BuildReport 汇总大小 124,969,270 bytes。
+- 当前工程版本：`1.13.0`
+- v1.13.0 WebGL 发布构建：成功，入口场景为 `Assets/_Game/Scenes/Game.scene`；发布包根目录保持 `index.html`、`Build/`、`TemplateData/`，并在模板 CSS 中隐藏团结引擎页脚。
+- v1.12.0 Windows 64 位构建记录：成功，入口场景为 `Assets/_Game/Scenes/Game.scene`，BuildReport 汇总大小 124,969,270 bytes。
 
 发布 Windows 版时必须一起保留 `Growblade.exe`、`Growblade_Data`、`TuanjiePlayer.dll`、运行时 DLL 和 `Licenses/NotoSansSC-OFL.txt`，不能只分发 EXE。公开发布包和仓库版本号应同时更新 `ProjectSettings/ProjectSettings.asset`、README、CHANGELOG 与 Release 标题。
 
@@ -178,7 +223,7 @@ UI 使用 `Scale With Screen Size`，参考分辨率为 1280×720，宽高匹配
 
 ### 字体
 
-中文字体为 Noto Sans SC Regular，项目文件位于 `Assets/Codely/Fonts/`，采用 SIL Open Font License 1.1。完整许可证为 `Assets/Codely/Fonts/NotoSansSC-OFL.txt`；公开源码及可提取字体的发行包必须保留该文本。
+中文与日文默认使用 Noto Sans SC Regular，项目文件位于 `Assets/Codely/Fonts/`。韩文使用 `Assets/_Game/Resources/Fonts/NotoSansKR-VF.ttf`，运行时创建动态 TMP 字体以覆盖完整韩文字形。两者均采用 SIL Open Font License 1.1；公开源码及可提取字体的发行包必须保留对应许可证文本。
 
 ### 项目许可证
 

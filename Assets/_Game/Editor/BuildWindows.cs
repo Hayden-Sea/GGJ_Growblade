@@ -29,5 +29,26 @@ namespace SwordGame.Editor
 
             Debug.Log($"Growblade Windows build succeeded: {report.summary.outputPath}; size={report.summary.totalSize}");
         }
+
+        public static void BuildWebGL()
+        {
+            var projectRoot = Directory.GetParent(Application.dataPath).FullName;
+            var outputDirectory = Path.Combine(projectRoot, "Builds", "WebGL");
+            Directory.CreateDirectory(outputDirectory);
+
+            var options = new BuildPlayerOptions
+            {
+                scenes = new[] { "Assets/_Game/Scenes/Game.scene" },
+                locationPathName = outputDirectory,
+                target = BuildTarget.WebGL,
+                options = BuildOptions.None
+            };
+
+            var report = BuildPipeline.BuildPlayer(options);
+            if (report.summary.result != BuildResult.Succeeded)
+                throw new InvalidOperationException($"Growblade WebGL build failed: {report.summary.result}; errors={report.summary.totalErrors}");
+
+            Debug.Log($"Growblade WebGL build succeeded: {report.summary.outputPath}; size={report.summary.totalSize}");
+        }
     }
 }
